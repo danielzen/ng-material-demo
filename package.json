@@ -1,0 +1,11 @@
+{
+  "name": "material",
+  "version": "1.0.0",
+  "description": "Angular Material Design Test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Zen",
+  "license": "ISC"
+}

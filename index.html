@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="bower_components/angular-material/themes/red-theme.css">
+  <link rel="stylesheet" href="bower_components/angular-material/themes/green-theme.css">
+  <link rel="stylesheet" href="bower_components/angular-material/themes/indigo-theme.css">
+  <link rel="stylesheet" href="bower_components/angular-material/themes/orange-theme.css">
+  <link rel="stylesheet" href="bower_components/angular-material/themes/cyan-theme.css">
+  <link rel="stylesheet" href="bower_components/angular-material/themes/grey-theme.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic">
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/hammerjs/hammer.js"></script>
+  <script src="bower_components/angular-material/angular-material.js"></script>
+  <script src="script.js"></script>
+
+</head>
+<body ng-app="demoApp">
+
+<div class="dialogdemoBasicUsage">
+  <md-toolbar md-theme="indigo">
+    <div class="md-toolbar-tools">
+      <span class="md-flex">Toolbar: indigo-theme</span>
+    </div>
+  </md-toolbar>
+  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" >
+    <md-toolbar class="md-theme-indigo">
+      <h1 class="md-toolbar-tools">Sidenav Left</h1>
+    </md-toolbar>
+    <md-content class="md-padding" ng-controller="LeftCtrl">
+      <md-button ng-click="close()" class="md-primary">
+        Close Sidenav Left
+      </md-button>
+    </md-content>
+  </md-sidenav>
+  <md-content class="full" ng-controller="DialogBottomCtrl">
+    <section layout="vertical" layout-sm="horizontal" layout-align="center center">
+      <md-list>
+        <md-item>
+          <p class="inset">
+            Open a dialog over the app's content. Press escape or click outside to close the dialog.
+          </p>
+        </md-item>
+        <md-item layout="row" layout-align="start start">
+          <md-button class="md-raised" md-theme="grey" ng-click="showConfirm($event)">
+            Open Dialog
+          </md-button>
+          <md-button class="md-raised" md-theme="grey" ng-click="toggleLeft($event)">
+            Open Left Nav
+            <md-tooltip>Will open left nav</md-tooltip>
+          </md-button>
+        </md-item>
+        <md-divider></md-divider>
+        <md-item>
+          <md-radio-group ng-model="data.group1" layout="row">
+            <md-radio-button value="Apple" aria-label="Label 1">Apple</md-radio-button>
+            <md-radio-button value="Banana"> Banana</md-radio-button>
+            <md-radio-button value="Mango" aria-label="Label 3">Mango</md-radio-button>
+          </md-radio-group>
+        </md-item>
+        <md-divider></md-divider>
+        <md-item layout="column" layout-align="start start">
+          <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+            Checkbox 1: {{ data.cb1 }}
+          </md-checkbox>
+          <md-checkbox ng-model="data.cb2" aria-label="Checkbox 2" ng-true-value="'yup'" ng-false-value="false">
+            Checkbox 2: {{ data.cb2 }}
+          </md-checkbox>
+          <md-checkbox ng-disabled="true" aria-label="Disabled checkbox">
+            Checkbox (Disabled)
+          </md-checkbox>
+        </md-item>
+        <md-item ng-show="data.cb2">
+          <md-progress-circular md-theme="red" md-mode="indeterminate"></md-progress-circular>
+        </md-item>
+      </md-list>
+    </section>
+  </md-content>
+
+
+</div>
+
+<md-content ng-controller="ButtonCtrl">
+  <section layout="vertical" layout-sm="horizontal" layout-align="center center">
+      <md-button>{{title1}}</md-button>
+      <md-button md-no-ink class="md-primary">Primary (noink)</md-button>
+      <md-button ng-disabled="isDisabled" class="md-primary">Disabled</md-button>
+      <md-button class="md-warn" ng-click="isDisabled = !isDisabled">{{title4}}</md-button>
+      <div class="label">flat</div>
+    </section>
+
+    <section layout="vertical" layout-sm="horizontal" layout-align="center center">
+      <md-button class="md-raised">Button</md-button>
+      <md-button class="md-raised md-primary">Primary</md-button>
+      <md-button ng-disabled="true" class="md-raised md-primary">Disabled</md-button>
+      <md-button class="md-raised md-warn">Warn</md-button>
+      <div class="label">raised</div>
+    </section>
+
+    <section layout="vertical" layout-sm="horizontal" layout-align="center center">
+      <md-button class="md-fab" aria-label="Time">
+        <md-icon icon="./img/icons/ic_access_time_24px.svg" style="width: 24px; height: 24px;"></md-icon>
+        <md-tooltip>Time</md-tooltip>
+      </md-button>
+
+      <md-button class="md-fab" aria-label="New document">
+        <md-tooltip>New Document</md-tooltip>
+        <md-icon icon="./img/icons/ic_insert_drive_file_24px.svg" style="width: 24px; height: 24px;"></md-icon>
+      </md-button>
+
+      <md-button class="md-fab" disabled aria-label="Comment">
+        <md-icon icon="./img/icons/ic_comment_24px.svg" style="width: 24px; height: 24px;"></md-icon>
+        <md-tooltip>Comment</md-tooltip>
+      </md-button>
+
+      <md-button class="md-fab md-primary" md-theme="cyan" aria-label="Profile">
+        <md-icon icon="./img/icons/ic_people_24px.svg" style="width: 24px; height: 24px;"></md-icon>
+        <md-tooltip>Profile</md-tooltip>
+      </md-button>
+      <div class="label">FAB</div>
+    </section>
+
+    <section layout="vertical" layout-sm="horizontal" layout-align="center center">
+      <md-button ng-href="{{googleUrl}}" target="_blank">Go to Google</md-button>
+      <md-button>RSVP</md-button>
+      <div class="label">Button Group</div>
+    </section>
+
+    <section layout="vertical" layout-sm="horizontal" layout-align="center center">
+      <md-button class="md-primary" md-theme="green">Button</md-button>
+      <md-button class="md-primary md-raised" md-theme="indigo">Button</md-button>
+      <md-button class="md-primary md-raised" md-theme="orange">Button</md-button>
+      <md-button class="md-primary" md-theme="cyan">Button</md-button>
+      <div class="label">Themed</div>
+    </section>
+
+  </md-content>
+
+<!-- Didn't get this working -->
+<div ng-controller="BottomSheetExample" class="bottomSheetdemoBasicUsage">
+  <p style="padding-left: 20px;">
+    Bottom sheet can be dismissed with the service or a swipe down. (not working yet)
+  </p>
+  <div class="bottom-sheet-demo inset" layout="column" layout-sm="row" layout-align="center">
+    <md-button class="md-primary" ng-click="showListBottomSheet($event)">
+      Show as List
+    </md-button>
+  </div>
+  <br/>
+  <b layout="row" layout-align="center center" layout-margin>
+    {{alert}}
+  </b>
+</div>
+
+</body>
+</html>

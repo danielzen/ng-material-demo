@@ -1,0 +1,21 @@
+{
+  "name": "material",
+  "version": "1.0.0",
+  "authors": [
+    "Daniel Zen <daniel@zendigital.com>"
+  ],
+  "description": "Angular Material Design Test",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "master"
+  }
+}
