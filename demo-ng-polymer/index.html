@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>ng-polymer-elements Demo</title>
+  <script src="../bower_components/webcomponentsjs/webcomponents.js"></script>
+  <link rel="import" href="../bower_components/core-toolbar/core-toolbar.html">
+  <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+  <link rel="import" href="../bower_components/paper-button/paper-button.html">
+  <link rel="import" href="../bower_components/core-input/core-input.html">
+  <link rel="import" href="../bower_components/paper-input/paper-input.html">
+  <link rel="import" href="../bower_components/paper-slider/paper-slider.html">
+  <link rel="import" href="../bower_components/paper-radio-group/paper-radio-group.html">
+  <link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
+  <link rel="import" href="../bower_components/paper-toggle-button/paper-toggle-button.html">
+  <link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+  <link rel="import" href="../bower_components/paper-dialog/paper-action-dialog.html">
+  <link rel="import" href="../bower_components/paper-toast/paper-toast.html">
+  <link rel="import" href="../bower_components/core-list/core-list.html">
+  <link rel="import" href="../bower_components/core-menu/core-menu.html">
+  <link rel="import" href="../bower_components/core-item/core-item.html">
+  <link rel="import" href="../bower_components/core-dropdown/core-dropdown.html">
+  <link rel="import" href="../bower_components/core-dropdown-menu/core-dropdown-menu.html">
+  <link rel="import" href="../bower_components/core-input/core-input.html">
+  <link rel="import" href="../bower_components/paper-radio-group/paper-radio-group.html">
+  <link rel="import" href="../bower_components/core-menu/core-menu.html">
+  <link rel="import" href="../bower_components/core-item/core-item.html">
+  <link rel="import" href="../bower_components/core-dropdown/core-dropdown.html">
+  <link rel="import" href="../bower_components/core-dropdown-menu/core-dropdown-menu.html">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body unresolved>
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/ng-polymer-elements/ng-polymer-elements.js"></script>
+<script>
+  function bootstrap() {
+    angular.bootstrap(wrap(document), ['polymerDemo']);
+  }
+
+  if (angular.isDefined(document.body.attributes['unresolved'])) {
+    var readyListener = function () {
+      bootstrap();
+      window.removeEventListener('polymer-ready', readyListener);
+    };
+    window.addEventListener('polymer-ready', readyListener);
+  } else {
+    bootstrap();
+  }
+
+  var app = angular.module('polymerDemo', ['ng-polymer-elements'])
+    .controller('RadioDropDownCtrl', function($scope) {
+      this.number = 1;
+    }
+  );
+
+</script>
+<div ng-controller="RadioDropDownCtrl">
+  <paper-radio-group ng-model="selectable">
+    <paper-radio-button name="one" label="One"></paper-radio-button>
+    <paper-radio-button name="two" label="Two"></paper-radio-button>
+    <paper-radio-button name="three" label="Three"></paper-radio-button>
+  </paper-radio-group>
+  <span>Selected: {{radio}}</span>
+  <core-dropdown-menu>
+    <core-dropdown layered class="dropdown">
+      <core-menu ng-model="selectable" valueattr="name">
+        <core-item name="one">One</core-item>
+        <core-item name="two">Two</core-item>
+        <core-item name="three">Three</core-item>
+      </core-menu>
+    </core-dropdown>
+  </core-dropdown-menu>
+</div>
+<div class="col-sm-6" vertical layout ng-controller="RadioDropDownCtrl as ctrl">
+  <input type="number" is="core-input" ng-model="ctrl.number" min="0" max="5"/>
+  <paper-slider ng-model="ctrl.number" max="5" snaps pin></paper-slider>
+  <core-toolbar>
+    <paper-tabs ng-model="ctrl.number" flex>
+      <paper-tab>0</paper-tab>
+      <paper-tab>1</paper-tab>
+      <paper-tab>2</paper-tab>
+      <paper-tab>3</paper-tab>
+      <paper-tab>4</paper-tab>
+      <paper-tab>5</paper-tab>
+    </paper-tabs>
+  </core-toolbar>
+
+  <core-dropdown-menu>
+    <core-dropdown layered class="dropdown">
+      <core-menu ng-model="ctrl.number">
+        <core-item>Zero</core-item>
+        <core-item>One</core-item>
+        <core-item>Two</core-item>
+        <core-item>Three</core-item>
+        <core-item>Four</core-item>
+        <core-item>Five</core-item>
+      </core-menu>
+    </core-dropdown>
+  </core-dropdown-menu>
+</div>
+</body>
+</html>
